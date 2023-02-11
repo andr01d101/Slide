@@ -28,7 +28,7 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.getCustomerId("DanTar1").then(custId => {
-      fetch('https://testportalone.processonepayments.com/API/api/Session/Create?portalOneAuthenticationKey=BE8E8BB5-ADE0-4B3B-8456-58F29079B377&CustomerId=' + custId)
+      fetch('https://stgportalone.processonepayments.com/API/api/Session/Create?portalOneAuthenticationKey=F809D1B7-A8AB-4611-AEBD-7958541509E0&CustomerId=' + custId)
         .then(response => response.json())
         .then(data => {
           let container = window.$('#portalOneContainer');
@@ -65,20 +65,20 @@ class App extends React.Component {
       var customerIDExists = false;  //Replace this with a call to customer database
       var customerId = "";
       if (customerIDExists) {
-        customerId = "075416b8-af43-4882-b7f9-d66c3f1d2fe3";
+        customerId = "f6e5504f-5707-408d-ad66-f6b3e52fc29a";
         resolve(customerId);
       } else {
         const options = {
           method: 'POST',
           headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            PortalOneAuthenticationKey: 'BE8E8BB5-ADE0-4B3B-8456-58F29079B377',
+            PortalOneAuthenticationKey: 'F809D1B7-A8AB-4611-AEBD-7958541509E0',
             ExternalCustomerId: 'customer12345',
             CustomerName: customerName
           })
         };
 
-        fetch('https://testportalone.processonepayments.com/Api/Api/Customer/CreateAccount', options)
+        fetch('https://stgportalone.processonepayments.com/Api/Api/Customer/CreateAccount', options)
           .then(response => response.json())
           .then(response => resolve(response.CustomerId))
           .catch(err => console.error(err));
